@@ -1,0 +1,5 @@
+﻿  pch.cpp
+  test4.2.cpp
+test4.2.obj : error LNK2019: unresolved external symbol "public: static class std::shared_ptr<class ravendb::client::documents::DocumentStore> __cdecl ravendb::client::documents::DocumentStore::create(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?create@DocumentStore@documents@client@ravendb@@SA?AV?$shared_ptr@VDocumentStore@documents@client@ravendb@@@std@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@6@0@Z) referenced in function _main
+test4.2.obj : error LNK2019: unresolved external symbol "public: __thiscall ravendb::client::documents::session::DocumentSession::~DocumentSession(void)" (??1DocumentSession@session@documents@client@ravendb@@QAE@XZ) referenced in function _main
+C:\testing 4.2\test4.2_app\test4.2\Debug\test4.2.exe : fatal error LNK1120: 2 unresolved externals
