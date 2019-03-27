@@ -1,1 +1,7 @@
-﻿
+﻿  pch.cpp
+  Library.cpp
+  test4.2.cpp
+  Tester.cpp
+  Generating Code...
+     Creating library C:\testing 4.2\test4.2_app\test4.2\x64\Debug\test4.2.lib and object C:\testing 4.2\test4.2_app\test4.2\x64\Debug\test4.2.exp
+  test4.2.vcxproj -> C:\testing 4.2\test4.2_app\test4.2\x64\Debug\test4.2.dll
