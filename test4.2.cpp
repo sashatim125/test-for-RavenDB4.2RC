@@ -1,16 +1,24 @@
 
 #include "pch.h"
-#include "test4.2.h"
 #include "Tester.h"
+#include <iostream>
 
 
-
-	void run_tests(const char* urls[], size_t num_of_urls, const char* db_name, char* result_buffer)
+extern "C"
+{
+	void __declspec(dllexport) _stdcall
+		run_tests(
+			const char* urls[],
+			int32_t num_of_urls,
+			const char* db_name,
+			void* result_buffer,
+			int32_t* result_buffer_length)
 	{
 		auto tester = test::Tester(urls, num_of_urls, db_name);
 		tester.run();
-		tester.fillResultBuffer(result_buffer);
+		tester.fillResultBuffer((char*)result_buffer, result_buffer_length);
 	}
+}
 
 
 //int main()

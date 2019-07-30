@@ -22,8 +22,8 @@ namespace test
 		std::vector<std::string> _booksIds{};
 		std::vector<std::string> _usersIds{};
 
-		static constexpr auto NUM_OF_BOOKS = 100;
-		static constexpr auto NUM_OF_USERS = 10;
+		static constexpr auto NUM_OF_BOOKS = 1000;
+		static constexpr auto NUM_OF_USERS = 100;
 
 		void runTest(const std::function<void()>& test, const std::string& testName);
 
@@ -47,6 +47,6 @@ namespace test
 
 		void run();
 
-		void fillResultBuffer(char* resultBuffer);
+		void fillResultBuffer(char* resultBuffer, int32_t* size);
 	};
 }

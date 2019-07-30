@@ -15,29 +15,26 @@ namespace test
 		//curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L);
 	}
 
-	void Tester::fillResultBuffer(char* resultBuffer)
+	void Tester::fillResultBuffer(char* resultBuffer, int32_t* size)
 	{
 		auto&& res = _resultStream.str();
-		std::memcpy(resultBuffer, res.data(), res.length() + 1);
+		std::memcpy(resultBuffer, res.data(), *size = res.length());
 	}
 
 	void Tester::runTest(const std::function<void()>& test, const std::string& testName)
 	{
-		static const auto line = std::string(75, '-');
 		try
 		{
 			test();
 		}
 		catch (std::exception& e)
 		{
-			_resultStream << std::setw(20) << std::left << testName;
-			_resultStream << " FAILED with ERROR: \n        " << e.what() <<
-				line << "\n" << std::endl;
+			_resultStream << testName;
+			_resultStream << " FAILED with ERROR: \n" << e.what() << std::endl;
 			return;
 		}
-		_resultStream << std::setw(20) << std::left << testName;
-		_resultStream << " SUCCEEDED" << "\n" <<
-			line << "\n" << std::endl;
+		_resultStream << testName;
+		_resultStream << " SUCCEEDED" << std::endl;
 
 	}
 
@@ -210,10 +207,6 @@ namespace test
 
 		//_store->set_before_perform(set_for_fiddler);
 		_store->initialize();
-
-		_resultStream << "[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]\n";
-		_resultStream << "[][][][][][][][][][] C++ client TESTS by Alexander [][][][][][][][][][]]\n";
-		_resultStream << "[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]\n";
 		_resultStream << std::endl;
 	}
 
@@ -232,7 +225,7 @@ namespace test
 		runTest([this, &library]() {addUsers(library); }, "AddingUsers");
 
 		srand(unsigned(time(NULL)));
-		for(auto i = 0; i < 10; ++i)
+		for(auto i = 0; i < 100; ++i)
 		{
 			auto bookId = _booksIds[rand() % NUM_OF_BOOKS];
 			auto userId = _usersIds[rand() % NUM_OF_USERS];
@@ -245,7 +238,7 @@ namespace test
 		}
 
 		srand(unsigned(time(NULL)));
-		for (auto i = 0; i < 10; ++i)
+		for (auto i = 0; i < 100; ++i)
 		{
 			auto bookId = _booksIds[rand() % NUM_OF_BOOKS];
 			auto newAuthor = std::to_string(rand());
@@ -256,7 +249,7 @@ namespace test
 		}
 
 		srand(unsigned(time(NULL)));
-		for (auto i = 0; i < 10; ++i)
+		for (auto i = 0; i < 100; ++i)
 		{
 			auto bookId = _booksIds[rand() % NUM_OF_BOOKS];
 			auto userId = _usersIds[rand() % NUM_OF_USERS];
@@ -269,7 +262,7 @@ namespace test
 		}
 
 		srand(unsigned(time(NULL)));
-		for (auto i = 0; i < 10; ++i)
+		for (auto i = 0; i < 100; ++i)
 		{
 			auto bookId = _booksIds[rand() % NUM_OF_BOOKS];
 			auto newAuthor = std::to_string(rand());

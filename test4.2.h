@@ -1,6 +1,11 @@
 #pragma once
+#include <cstdint>
 
-extern "C"
-{
-	__declspec(dllexport) void run_tests(const char* urls[], size_t num_of_urls, const char* db_name, char* result_buffer);
-}
+
+void run_tests(
+	const char* urls[],
+	int32_t num_of_urls,
+	const char* db_name,
+	void* result_buffer,
+	int32_t* result_buffer_length);
+

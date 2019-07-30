@@ -226,7 +226,7 @@ namespace library
 		auto user = session.load<LibraryUser>(*book->loanedBy);
 		if (!user)
 		{
-			throw std::invalid_argument("No user with id : " + bookId);
+			throw std::invalid_argument("No user with id : " + *book->loanedBy);
 		}
 		if(session.advanced().get_number_of_requests() > numOfRequests + 1)
 		{
